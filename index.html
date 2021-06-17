@@ -1,115 +1,436 @@
 <!DOCTYPE html>
-<html lang="pt-pt">
-  <head>
-    <title>DWEB</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <style>
-      .navbar {
-        margin-bottom: 0;
-        border-radius: 0;
-      }
-      
-      footer {
-        background-color: #f2f2f2;
-        padding: 25px;
-      }
-      
-    .carousel-inner img {
-        width: 100%; 
-        margin: auto;
-        min-height:200px;
-    }
-
-    @media (max-width: 600px) {
-      .carousel-caption {
-        display: none; 
-      }
-    }
-    </style>
-  </head>
-  <body>
-
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
-        <a class="navbar-brand" href="#">Logo</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <img src="https://www.mesa-africa.org/wp-content/uploads/2016/06/beijing-1200x400.jpg" alt="Image">
-          <div class="carousel-caption">
-          </div>      
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas de Robótica</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!--Css script-->
+    <link href = "script.css" rel = "stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #717475;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Sistemas de Robotica</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#cobra600">mdl_cobra600</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#nao">mdl_nao</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#links">links importantes</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="item">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGIjVsDxpSOaC0BrnnGw302GExYAMRV2gXmg&usqp=CAU" alt="Image">
-          <div class="carousel-caption">
-          </div>      
-        </div>
+      </nav>
+      <div class = "container content-bg">
+        <section class="mdl_cobra600" id="cobra600">
+          <div class ="cabecalho">
+              <h2>mdl_cobra600</h2>
+              <p><b>Nesta página iremos estudar o robot mdl_cobra600 disponível na toolbox do Peter Corke. Para instanciarmos o Robot no Matlab podemos fazê-lo de duas maneiras distintas.
+              <br>Podemos simplesmente usar o seguinte comando:</p></b>
+              >> mdl_cobra600<br><br>
+              <p><b>O comando irá criar o robot cobra600:</p></b>
+              <img src="img/c600_1.png" class="center" alt="img1">
+              <br><br><p><b>Juntamente com a criação do robot é criada uma pose para este que consiste no vetor [0 0 0 0] denominada “qz”.<br><br>
+              Para vermos os parâmetros de Denavit-Hartenberg (DH) podemos utilizar o comando:<br><br></b>             
+              >> c600<br></p>
+              <img src="img/c600_2.png" class="center" alt="img2"> 
+              <br><br><p><b>Como podemos observar na tabela acima, o Cobra600 possui 4 juntas (1ª coluna), 3 dessas juntas são de rotação como podemos observar na 2ª coluna em que a junta1, 2 e 4 têm comportamento variável, e a outra junta (3) é prismática pois a variável encontra-se na coluna de deslocamento (d).Esta junta só poder ter valores positivos. A 4ª coluna define o comprimento do link, a coluna alpha a rotação do mesmo e a coluna offset o offset. 
+              <br>Podemos plotar o número de juntas do mesmo utilizando o seguinte comando:<br></b></p>
+              <p>>> c600.n<br></p>
+              <p>Resultado:<br></p>
+              <p>ans = 4<br></p>    
+              <p><b>Caso pretendamos listar os links, por forma a visualizá-los de outra forma, podemos utilizar o seguinte comando:<br></p></b>
+              <p>>> c600.links<br></p>
+              <img src="img/c600_3.png" class="center" alt="img3"> 
+              <br><br><p><b>Podemos plotar o robot com a posição patrão qz:</b>
+              <br><br> >> c600.plot(qz);</p>
+              <img src="img/c600_4.png" class="center" alt="img4">     
+              <br><br></bre><p><b>Utilizando esta forma de instanciar o robot, para conseguirmos aumentar o espaço do workspace, temos de fazê-lo cada vez que efetuamos o plot do mesmo:</p></b>
+              <p></p>>> c600.plot(qz, 'workspace', [-1 1 -1 1 -1 1]); <b>%estamos a criar um workspace de -1 a 1 no eixo x, -1 a 1 no eixo y e -1 a 1 no eixo z</p></b>
+              <img src="img/c600_5.png" class="center" alt="img5">
+              <br><br><p><b>Podemos também utilizar o método teach() para simular movimentos do robot sem termos que estar constantemente a fazer plot:</p></b>
+              <p>>> c600.teach();</p>
+              <img src="img/c600_6.png" class="center" alt="img6">
+              <br><br><p><b>Tal como indicado acima, existe outra forma de instanciar o Robot e consiste em utilizar o código existente na toolbox no respetivo script:</p></b>
+              <p>>> links = [<br>
+                  Revolute('d', 0.387, 'a', 0.325, 'qlim', [-50 50]*pi/180);<br>
+                  Revolute('a', 0.275, 'alpha', pi, 'qlim', [-88 88]*pi/180);<br>
+                  Prismatic('qlim', [0 0.210]);<br>
+                  Revolute()<br>
+                  ];</p>    
+              <p>>> c600 = SerialLink(links, 'name', 'Cobra600', 'manufacturer', 'Adept', ...<br>
+                  'plotopt', {'workspace', [0 0.8 -0.6 0.6 0 0.4]} );</p> 
+              <p>>> qz = [0 0 0 0];</p>
+              <p><b>o nosso caso, por forma a plotarmos sem ter que alterar o workspace nos nossos ambientes gráficos, 
+                  utilizamos esta maneira de instanciar o robot e alteramos o tamanho do workspace da seguinte maneira:</p></b>
+              <p>>> c600 = SerialLink(links, 'name', 'Cobra600', 'manufacturer', 'Adept', ...
+                  'plotopt', {'workspace', [-1 1 -1 1 -1 1]} );</p>
+              <p><b>Tudo o resto funcionará da mesma maneira.</p></b>
+              <br><h5><b><u>Cinemática direta:</h5><br></b></u>
+              <p><b>Podemos analisar a cinemática direta, utilizando os seguintes comandos:</p></b>
+              <p>>> c600.plot([pi pi/2 pi/4 0],'workspace', [-1 1 -1 1 -1 1]);</p>
+              <img src="img/c600_7.png" class="center" alt="img7">
+              <br><br><p><b>O comando efetuado acima criou o robot Cobra600 na pose que é possível visualizar, em que a primeira junta está com uma rotação de pi(180º) em relação ao mundo,
+                  a segunda pi/2(90º) em relação à primeira junta, a terceira pi/4(45º) em relação à segunda junta e a quarta 0º em relação à terceira junta.</p></b>
+              <p><b>De seguida utilizamos o método fkine que retorna a transformação homogênea representando a pose do end-effector:</p></b>
+              <p>>> T = c600.fkine([pi pi/2 pi/4 0]);</p>
+              <img src="img/c600_8.png" class="center" alt="img8">
+              <br><br><p><b>Na matriz que resulta do comando acima, podemos verificar a posição de cada junta do robot e as coordenadas x, y e z do end-effector.</p></b>
+              <p><b>De seguida podemos fazer o print e o plot dessas mesmas coordenadas para verificarmos onde fica no mundo a posição do end-effector:</p></b>
+              <p>>> T.print('xyz');</p>
+              <p>t = (-0.325, -0.275, -0.398), RPY/xyz = (90, 0, -180) deg</p>       
+              <p>>> trplot(T, 'color', 'g');</p>
+              <img src="img/c600_9.png" class="center" alt="img9">
+              <br><br><p><b>Adicionando o robot com a seguinte forma, utilizando a pose definida para o fkine, podemos verificar que a posição do end-effector fica exatamente nas coordenadas
+                  o método fkine indicou:</p></b>
+              <p>>> hold on;</p>
+              <p>>> c600.plot([pi pi/2 pi/4 0],'workspace', [-1 1 -1 1 -1 1]);</p>
+              <img src="img/c600_10.png" class="center" alt="img10">
+              <br><br><h5><b><u>Cinemática inversa:</h5><br></u></b>
+              <p><b>No caso do robot cobra600, uma vez que se trata de um robot sub-atuado com apenas 4 juntas, apenas é possível efetuar a cinemática inversa fazendo utilização
+                  do método ‘Solução Numérica’, pois este tipo é limitado nas poses que o end-effector pode obter. Agarrando nas coordenadas definidas para a pose efetuada
+                    na cinemática direta temos:</p></b>    
+              <p>t = (-0.325, -0.275, -0.398), RPY/xyz = (90, 0, -180) deg</p>
+              <p><b>Começamos por construir a matriz Ti (identidade) com essas mesmas coordenadas:</p></b>      
+              <p>>> Ti = [1 0 0 -0.325 ;<br>
+                      0 1 0 -0.275 ;<br>
+                      0 0 1 -0.3984 ;<br>
+                      0 0 0 1];</p>           
+              <p><b>Podemos imprimir a matriz para visualizarmos como ficou:</p></b>        
+              <p>>> Ti</p>
+              <img src="img/c600_11.png" class="center" alt="img11">
+              <br><br><p><b>Aplicamos o método ikine sobre a matriz que acabamos de construir, por forma a ultrapassar o facto deste robot só ter as 4 juntas, temos que ignorar a rotação sobre 
+                  o eixo x e y para quando é efetuado o cálculo do erro do end-effector. Para tal, temos que definir uma máscara ‘mask’ em que consiste num vetor que corresponde
+                  a três translações e três orientações nas coordenadas do end-effector (tx, ty, tz, rx, ry, rz):</p></b>
+              <p>>> I = c600.ikine(Ti,'mask', [1 1 1 0 0 1]);</p>
+              <p><b>Podemos agora imprimir os ângulos definidos pelo método utilizado para a cinemática inversa (Ikine):</p></b>
+              <p>>> I</p>
+              <img src="img/c600_12.png" class="center" alt="img12">
+              <p><b>Fazemos um reset ao espaço onde plotamos, caso ainda esteja aberto:</p></b>
+              <P>>> cla reset;</P>
+              <p><b>Efetuamos o plot do nosso Robot, utilizando a variável ‘I’ que contém os ângulos definidos pelo Ikine:</p></b>
+              <p>>> c600.plot(I, 'workspace', [-1 1 -1 1 -1 1]);</p>
+              <img src="img/c600_13.png" class="center" alt="img13">
+              <br><br><p><b>Calculamos a matriz para podermos comparar com a obtida no método da cinemática inversa e podemos observar que são diferentes, no entanto, obtivemos o mesmo resultado
+                  na medida que a pose do robot também leva o end-effector às mesmas coordenadas (‘xyz’):</p></b>
+              <p>>> Ta =c600.fkine(I);</p>
+              <p>>> Ta</p>     
+              <img src="img/c600_14.png" class="center" alt="img14">
+              <br><br><h5><b><u>Trajetórias e Mobilidade: </h5></u></b>
+              <p><b>Iremos abordar as trajetórias e mobilidade de duas maneiras diferentes. A primeira será de um ponto inicial até um ponto final.</p></b>
+              <p><b>Começamos por instanciar o robot no caso de não estar:</p></b>
+              <p>>> mdl_cobra600</p>
+              <p><b>Neste primeiro exemplo iremos utilizar a pose predefinida qz e iremos instanciar uma nova para ser a final denominada qf:</p></b>  
+              <p>qz:</p>
+              <img src="img/c600_15.png" class="center" alt="img15">
+              <br><br><p>>> qf = [pi/2 pi/4 pi/8 0]</p>
+              <img src="img/c600_16.png" class="center" alt="img16">
+              <br><br><p><b>De seguida definimos os tempos:</p></b>
+              <p>>> t = [0:.05:8];</p>
+              <p><b>O primeiro parâmetro é o início, o segundo o incremento e o ultimo o final, neste caso de 0 a 8 segundos com incrementos de 0.05.</p></b>
+              <p><b>Definimos a trajetória: </p></b>
+              <p>>> q = jtraj(qz, qf, t);</p>
+              <p><b>Efectuamos o plot:</p></b>
+              <p>>> c600.plot(q, 'workspace', [-1 1 -1 1 -1 1])</p><br>
+              <img src="img/c600_17.png" class="center" alt="img17"><br>
+              <img src="img/c600_18.png" class="center" alt="img18"><br>
+              <img src="img/c600_19.png" class="center" alt="img19">
+              <br><br><p><b>Video do movimento: </p></b>
+              <br><video width="640 height="480" controls class="center">
+                  <source src="media/video_1.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <br><br><p><b>Podemos também efetuar a trajetória utilizando o mesmo método, mas de forma sequencial:</p></b>
+              <p>>> mdl_cobra600</p>
+              <p><b>Criamos o ponto final da primeira sequência:</p></b>
+              <p>>> qi = [pi/4 0 0 0]</p>
+              <img src="img/c600_20.png" class="center" alt="img20">
+              <p><b>Definimos o tempo que iremos utilizar na primeira sequência:</p></b>
+              <p>>> t = [0:.1:8]</p>
+              <p><b>Definimos a primeira sequência, com a posição inicial, final e o tempo:</p></b>
+              <p>>> it = jtraj(qz, qi, t);</p>
+              <p><b>Definimos a posição inicial da segunda sequência, que corresponde com a final da primeira:</p></b>
+              <p>>> qfi = [pi/4 0 0 0];</p>
+              <p><b>Definimos a posição final da segunda sequência:</p></b>
+              <p>>> qff = [pi/4 pi/6 0 pi];</p>
+              <p><b>Definimos o tempo da segunda sequência. Neste caso vamos utilizar tempos diferentes, mas podiam ser iguais:</p></b>
+              <p>>> tf = [0:.2:8];</p>
+              <p><b>Definimos a segunda sequência com os novos valores criados:</p></b>
+              <p>>> ft = jtraj(qfi, qff, tf);</p>
+              <p><b>Plotamos ambas as sequências pela ordem que queremos:</p></b>
+              <p>>> c600.plot(it, 'workspace', [-1 1 -1 1 -1 1]);</p>
+              <p>>> c600.plot(ft, 'workspace', [-1 1 -1 1 -1 1]);</p>
+              <img src="img/c600_21.png" class="center" alt="img21"><br>
+              <img src="img/c600_22.png" class="center" alt="img22"><br>
+              <img src="img/c600_23.png" class="center" alt="img23">
+              <br><br><h5>Interface gráfica:</h5>
+              <p><b>De forma a podermos experimentar de uma forma mais simples a cinemática direta e inversa, efetuamos a seguinte interface gráfica:</p></b>
+              <img src="img/c600_24.png" class="center" alt="img24">
+              <br><br><p><b>Conforme podemos observar, o gui permite-nos colocar os ângulos das juntas e carregar em forward onde é aplicada a cinemática direta.</p></b>
+              <img src="img/c600_25.png" class="center" alt="img25">
+              <br></br><p><b>A nível de código, estamos a receber os valores provenientes das quatro caixas de texto das juntas para dentro de variáveis e a multiplicar por pi/180 por
+                  forma a trabalharmos em graus no gui. De seguida estamos a instanciar o robot, a fazer um reset à área de plot para o caso de existir já algum gráfico
+                    e de seguida estamos a efetuar o plot dos ângulos definidos no ambiente gráfico, efetuamos o método fkine para irmos buscar as coordenadas x, y e z do end-effector
+                    e de seguida colocamo-las nas caixas de texto das coordenadas.</p></b>
+              <p><b>Carregando agora sem mudar as coordenadas no botão “Inverse”, é aplicada a cinemática inversa:</p></b>
+              <img src="img/c600_27.png" class="center" alt="img26">              
+              <br><br><p><b>Como podemos observar os ângulos das juntas mudaram, no entanto, o end-effector ficou exatamente nas mesmas coordenadas. Podemos verificar graficamente também que a 
+                  pose do Robot mudou, mas chegou ao mesmo destino.</p></b>
+              <p><b>A nível de código temos o seguinte:</p></b>              
+              <img src="img/c600_28.png" class="center" alt="img27">
+              <br></br><p><b>Estamos a ir buscar os valores que estão nas caixas de texto das coordenadas x,y e z para dentro de variáveis, instanciamos o robot e de seguida definimos a 
+              matriz T com os valores de coordenadas provenientes das variáveis. Para aplicar a cinemática inversa aplicamos o método Ikine e de seguida fazemos reset ao ambiente
+              de plot e fazemos o plot do resultado do método Ikine. Por último, colocamos os valores dos ângulos das juntas obtidos nas respetivas caixas de texto.</p></b>
+              <p><b>Efetuamos também um ambiente gráfico separado, para podermos simular os movimentos do robot definindo uma posição inicial, uma posição final e também podendo alterar os parâmetros
+                  do tempo:</p></b>
+              <img src="img/c600_29.png" class="center" alt="img28"><br>
+              <img src="img/c600_30.png" class="center" alt="img29">           
+              <br><br><p>Video do movimento com GUI: </p>
+              <br><video width="640 height="480" controls class="center">
+                  <source src="media/video_2.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <br><br><p><b>Para testarmos, temos que colocar os ângulos das juntas iniciais e finais (ou deixar as que estão predefinidas) e configurar os parâmetros do tempo (início, fim
+                  e incremento) ou deixar os predefinidos. De seguida basta carregar em Run. O clear serve para limpar os dados.</p></b>
+              <p><b>Passando à explicação do código temos:</p></b>
+              <img src="img/c600_31.png" class="center" alt="img30">
+              <br><br><p><b>Vamos buscar os valores a todas as caixas de texto de todos os parâmetros, instanciamos o robot de forma manual, ignorando qz (pois não interessa a pose pois
+              vamos estar a defini-las de forma dinâmica), de seguida agarramos nos ângulos da junta da pose inicial e colocamos em qz, da final colocamos em qi e os parâmetros
+                do tempo colocamos em t. De seguida estamos a utilizar o método jtraj() para efetuar a trajetória, contendo a posição inicial, final e os tempos e de seguida plotamos
+                para o workspace com tamanho -1 até 1 nos três eixos. Por fim, passamos os valores dos ângulos da pose final para as caixas de texto da pose inicial e colocamos
+                  a pose final a 0’s.</p></b>    
+                  <br><br><a href="#">Voltar ao topo.</a>
+          </div><br><br><!--.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
+        </section>
+        <hr><br><br>
+        <section class="mdl_nao" id="nao">
+          <div class ="cabecalho">
+              <h2>mdl_nao</h2>
+              <p><b>Este script cria dois braços e duas pernas do robot, neste trabalho vamos estudar apenas um braço que representa 4DOF. Optamos por considerar o braço esquerdo,
+                  no entanto, o que vamos estudar aqui serve para ambos os braços.</b></p>
+              <p><b>Utilizando o seguinte comando instanciamos o robot:</b></p>
+              <p>>> mdl_nao</p>
+              <p><b>São criadas as seguintes variáveis:</b></p>
+              <img src="img/c600_32.png" class="center" alt="img32">
+              <br><br><p><b>A título de demostração, podemos plotar o robot completo utilizando os seguintes comandos:</b></p>
+              <p>>> leftleg.plot([0 0 0 0 0 0], 'workspace', 400*[-1 1 -1 1 -1 1]);</br>
+              >> hold on<br>
+              >> rightleg.plot([0 0 0 0 0 0], 'workspace', 400*[-1 1 -1 1 -1 1]);</br>
+              >> leftarm.plot([0 0 0 0], 'workspace', 400*[-1 1 -1 1 -1 1]);</br>
+              >> rightarm.plot([0 0 0 0], 'workspace', 400*[-1 1 -1 1 -1 1]);</p>
+              <img src="img/c600_33.png" class="center" alt="img33">
+              <br><br><p><b>Para o nosso estudo, podemos começar por listar os parâmetros de Denavit-Hartenberg (DH), para tal basta corrermos o seguinte comando:</b></p>
+              <img src="img/c600_34.png" class="center" alt="img34">
+              <br><br><p><b>Como podemos observar no quadro impresso, o braço possui quatro juntas, todas estas de rotação (uma vez que o angulo da junta (teta) é variável em 
+              todas as juntas). Podemos neste quadro também verificar a configuração do deslocamento (d), o comprimento (a), a rotação (alfa) e o offset.</b></p>
+              <p><b>Podemos plotar o braço, de forma a conhecermos visualmente o mesmo. Para tal fazemos o plot com as posições 0,0,0,0:</b></p>
+              <p>>> leftarm.plot([0 0 0 0])</p>
+              <img src="img/c600_35.png" class="center" alt="img35">
+              <br><br><p><b>Podemos também listar o número de juntas:</b></p>
+              <p>>> leftarm.n</p>
+              <p>ans = 4</p>
+              <p><b>De forma alternativa, podemos listar os links da seguinte maneira:</b></p>
+              <p>>> leftarm.links</p>
+              <img src="img/c600_36.png" class="center" alt="img36">
+              <br><br><p><b>Para conhecermos os movimentos do robot, podemos utilizar o método teach():</b></p>
+              <img src="img/c600_37.png" class="center" alt="img37"><br>
+              <img src="img/c600_38.png" class="center" alt="img38">
+              <br><br><p><b>Podemos olhar para a construção manual do Robot, caso a pretendamos fazer, o código que instancia o braço é o seguinte:</b></p>
+              <p>leftarm = SerialLink( [<br>
+                  Revolute('d', 0, 'alpha', -pi/2, 'a', 0, 'modified')<br>
+                  Revolute('d', 0, 'alpha', pi/2,  'a', 0, 'offset', -pi/2, 'modified')<br>
+                  Revolute('d', UpperArmLength, 'alpha', -pi/2, 'a', 0, 'modified')<br>
+                  Revolute('d', 0, 'alpha', pi/2,  'a', 0, 'modified')<br>
+                  ], ...<br>
+                  'base', transl(0, ShoulderOffsetY+ElbowOffsetY, ShoulderOffsetZ), ...<br>
+                  'tool', trotz(pi/2)*transl(HandOffsetX+LowerArmLength, 0, 0), ...<br>
+                  'plotopt', plotopts, ...<br>
+                  'name', 'left arm', 'manufacturer', 'Aldabaran');</p>               
+              <br><br><h5><b><u>Cinemática direta:</h5></u></b>
+              <p><b>Podemos analisar a cinemática direta, utilizando os seguintes comandos:</b></p>    
+              <p>>> leftarm.plot([pi/4 0 pi pi/2]);</p>
+              <img src="img/c600_39.png" class="center" alt="img39">             
+              <br><br><p><b>O comando efetuado acima plotou o braço esquerdo na pose que é possível visualizar, em que a primeira junta está com uma rotação de pi/4(45º) 
+              em relação ao mundo, a segunda 0(0º) em relação à primeira junta, a terceira pi (180º) em relação à segunda junta e a quarta pi/2(90º) em relação à terceira junta.</b></p>
+              <p><b>De seguida utilizamos o método fkine que retorna a transformação homogênea representando a pose do end-effector:</b></p>
+              <p>>> T = leftarm.fkine([pi/4 0 pi pi/2]);</p>
+              <p>>> T</p>
+              <img src="img/c600_40.png" class="center" alt="img40">
+              <br><br><p><b>Na matriz que resulta do comando acima, podemos verificar a posição de cada junta do robot e as coordenadas x, y e z do end-effector.</b></p>
+              <p><b>De seguida podemos fazer o print e o plot dessas mesmas coordenadas para verificarmos onde fica no mundo a posição do end-effector:</b></p>
+              <p>>> T.print('xyz');</p>
+              <p>t = (74.2, -0.7, 25.8), RPY/xyz = (90, -45, 180) deg</p>
+              <p>>> trplot(T, 'color', 'r');</p>
+              <img src="img/c600_41.png" class="center" alt="img41">
+              <br><br><p><b>Adicionando o robot com a seguinte forma, utilizando a pose definida para o fkine, podemos verificar que a posição do end-effector fica exatamente nas coordenadas o 
+              método fkine indicou (podemos observar que o desenho das coordenadas estão sobrepostas aos eixos do end-effector a amarelo: </b></p>
+              <img src="img/c600_42.png" class="center" alt="img42">
+              <br><br><h5><b><u>Cinemática inversa:</u></b></h5>
+              <p><b>No caso do braço do robot mdl_nao, uma vez que se trata de um robot sub-atuado com apenas 4 juntas, apenas é possível efetuar a cinemática inversa fazendo utilização do método 
+              ‘Solução Numérica’, pois este tipo é limitado nas poses que o end-effector pode obter. Agarrando nas coordenadas definidas para a pose efetuada na cinemática direta temos:</b></p>
+              <p>t = (74.2, -0.7, 25.8), RPY/xyz = (90, -45, 180) deg</p>
+              <p><bComeçamos por aplicar a cinemática direta, utilizando o método fkine para a pose que pretendemos:></b></p>
+              <p>> T = leftarm.fkine([pi/4 0 pi pi/2]);</p>
+              <img src="img/c600_53.png" class="center" alt="img53">
+              <br><br><p><b>Aplicamos o método ikine sobre a matriz construída através da cinemática direte, por forma a ultrapassar o facto deste robot só ter as 4 juntas, temos que ignorar a rotação sobre
+              o eixo x e y para quando é efetuado o cálculo do erro do end-effector. Para tal, temos que definir uma máscara ‘mask’ em que consiste num vetor que corresponde a três translações e três orientações
+                nas coordenadas do end-effector (tx, ty, tz, rx, ry, rz):</b></p>
+              <p>>> Ti = leftarm.ikine(T,'mask',[1 1 1 0 0 1]);</p>
+              <p>>> Ti</p>
+              <img src="img/c600_54.png" class="center" alt="img54">  
+              <br><br><p><b>Calculamos a matriz para podermos comparar com a obtida no método da cinemática inversa e podemos observar que são diferentes, no entanto, obtivemos o mesmo resultado na medida que a
+                pose do robot também leva o end-effector às mesmas coordenadas (‘xyz’):</b></p>
+              <p>>> Tf = leftarm.fkine(Ti);</p>
+              <p>>> Tf</p>
+              <img src="img/c600_55.png" class="center" alt="img55">            
+              <br><br><p><b>Como podemos constatar, os valores da Matriz T (calculados pela cinemática directa) são diferentes dos valores de Tf (pose obtida através da cinemática inversa, utilizando o método Ikine),
+                no entanto, as coordenadas x,y e z são as mesmas.</b></p>
+              <p><b>Conforme podemos observar nas figuras, o braço tem a posição totalmente diferente mas chega ao mesmo ponto.</b></p>
+              <p><b>Directo:</b></p>
+              <img src="img/c600_56.png" class="center" alt="img56">            
+              <br><br><p><b>Inverso:</b></p>
+              <img src="img/c600_57.png" class="center" alt="img57">  
+              <br><br><h5><b><u>Trajetórias e Mobilidade:</u></b></h5>
+              <p><b>Iremos abordar as trajetórias e mobilidade de duas maneiras diferentes. A primeira será de um ponto inicial até um ponto final.</b></p>
+              <p><b>Começamos por instanciar o robot no caso de não estar:</b></p>
+              <p>>> mdl_nao</p>
+              <p><b>Iremos determinar os ângulos das juntas para a pose inicial:</b></p>
+              <p>>> qi = [0 0 0 0]</p>
+              <img src="img/c600_43.png" class="center" alt="img43">
+              <br><br><p><b>De seguida definimos os ângulos das juntas para a pose final:</b></p>
+              <p>>> qf = [pi/4 0 pi pi/2]</p>
+              <img src="img/c600_44.png" class="center" alt="img44">
+              <br><br><p><b>Por último definimos o tempo de inicio (0), o incremento (0.1) e o tempo de fim(8)</b></p>
+              <p>>> t = [0:.1:8];</p>
+              <p><b>Definimos a trajetória:</b></p>
+              <p>>> q = jtraj(qi, qf, t);</p>
+              <p><b>Efetuamos o plot do movimento:</b></p>
+              <p>>> leftarm.plot(q)</p>
+              <img src="img/c600_45.png" class="center" alt="img45"><br>
+              <img src="img/c600_46.png" class="center" alt="img46"><br>
+              <img src="img/c600_47.png" class="center" alt="img47">
+              <br><br><p><b>Video do movimento: </p></b>
+              <br><video width="640 height="480" controls class="center">
+                  <source src="media/video_3.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <br><br><p><b>Podemos também efetuar uma trajetória com segmentos, utilizando o mesmo método.</b></p>
+              <p><b>Iniciamos a variável qi com os ângulos da pose inicial:</b></p>
+              <p>>> qi = [0 0 0 0]</p>
+              <p><b>Em qf colocamos os ângulos da posição final:</b></p>
+              <p></p>>> qf = [pi/4 0 pi pi/2]
+              <p><b>Iniciamos t com o tempo de início, o segmento e o final:</b></p>
+              <p>>> t = [0:.1:8];</p>
+              <p><b>Iniciamos q com o método jtraj que irá calcular a trajetória, onde dentro leva a pose inicial, a final e o tempo:</b></p>
+              <p>>> q = jtraj(qi, qf, t);</p>
+              <p><b>Iniciamos qfi, contendo esta variável a pose inicial deste segmento:</b></p>
+              <p>>> qfi = [pi/4 0 pi pi/2];</p>
+              <p><b>Em qff colocamos os ângulos para a pose final do segmento e da trajetória:</b></p>
+              <p>>> qff = [0 0 0 0]</p>
+              <p><b>Iniciamos r com o método jtraj que irá calcular a trajetória, dentro leva qfi, qff e o mesmo tempo que foi utilizado para a primeira trajetória:</b></p>
+              <p>> r = jtraj(qfi, qff, t);</p>
+              <p><b>Fazemos ambos os plots:</b></p>
+              <p>>> leftarm.plot(q)</p>
+              <p>>> leftarm.plot(r)</p>       
+              <img src="img/c600_48.png" class="center" alt="img48"><br>
+              <img src="img/c600_49.png" class="center" alt="img49"><br>
+              <img src="img/c600_50.png" class="center" alt="img50">
+              <br><br><p><b>Video do movimento: </p></b>
+              <br><video width="640 height="480" controls class="center">
+                  <source src="media/video_4.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>         
+              <br><br><h5><b><u>Interface gráfica:</u></b></h5>
+
+              <p><b>Estamos a ir buscar os valores que estão nas caixas de texto das coordenadas x,y e z para dentro d
+              e variáveis, instanciamos o robot e de seguida definimos a matriz T com os valores de coordenadas provenientes das
+               variáveis. Para aplicar a cinemática inversa aplicamos o método Ikine e de seguida fazemos reset ao ambiente de plot 
+               e fazemos o plot do resultado do método Ikine. Por último, colocamos os valores dos ângulos das juntas obtidos nas
+                respetivas caixas de texto.</b></p>
+              <p><b>Directa:</b></p>
+              <img src="img/c600_58.png" class="center" alt="img58">
+              <br><br><p><b>Conforme podemos observar, o gui permite-nos colocar os ângulos das juntas e carregar em forward
+               onde é aplicada a cinemática direta.</b></p>
+              <img src="img/c600_59.png" class="center" alt="img59">  
+              <br><br><p><b>A nível de código, estamos a receber os valores provenientes das quatro caixas de texto referentes aos angulos
+                 das juntas para dentro de variáveis e a multiplicar por pi/180 por forma a trabalharmos em graus no gui. De seguida
+                  estamos a instanciar o robot, a fazer um reset à área de plot para o caso de existir já algum gráfico e de seguida estamos a efetuar o plot dos
+               ângulos definidos no ambiente gráfico, efetuamos o método fkine para irmos buscar as coordenadas x, y e z do end-effector 
+               e de seguida colocamo-las nas caixas de texto das coordenadas.</b></p>
+
+              <p><b>Carregando agora sem mudar as coordenadas no botão “Inverse”, é aplicada a cinemática inversa:</b></p>
+
+              <p><b>Inversa:</b></p>
+              <img src="img/c600_60.png" class="center" alt="img60"> 
+              <br><br><p><b>Como podemos observar os ângulos das juntas mudaram, no entanto, o end-effector ficou exatamente nas
+               mesmas coordenadas. Podemos verificar graficamente também que a pose do Robot mudou, mas chegou ao mesmo destino.</b></p>
+
+              <p><b>A nível de código temos o seguinte:</b></p>
+              <img src="img/c600_61.png" class="center" alt="img61"> 
+              <br><br><p><b>Estamos a ir buscar os valores que estão nas caixas de texto das juntas obtidas no resultado da
+               cinemática direta para dentro de variáveis, instanciamos o robot através do método fkine e de seguida aplicamos a 
+               cinemática inversa, utilizando o método ikine na matriz resultado da cinemática direta (indo buscar as coordenadas x,y
+                e z) e utilizando uma máscara para ignorar a rotação em x e y. De seguida, aplicamos novamente o fkine sobre a cinemática
+                inversa, de forma a obtermos a matriz e podermos comparar com a inicial (se aplicável, não está a imprimir no gui) e fazemos
+                reset ao ambiente de plot. Por ultimo, fazemos o plot do resultado do método Ikine(J) e colocamos os valores dos ângulos
+                   das juntas obtidos nas respetivas caixas de texto.</b></p>
+
+              <br><video width="640 height="480" controls class="center">
+                <source src="media/video_6.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>         
+
+
+              <br><br><p><b>Efetuamos também um ambiente gráfico separado, para podermos simular os movimentos do robot definindo uma posição inicial, uma posição final e também podendo 
+                  alterar os parâmetros do tempo:</b></p>
+              <img src="img/c600_51.png" class="center" alt="img51">
+              <br><br><p><b>Video do GUI: </p></b>
+              <br><video width="640 height="480" controls class="center">
+                  <source src="media/video_5.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+              <br><br><p><b>Para testarmos, temos que colocar os ângulos das juntas iniciais e finais (ou deixar as que estão predefinidas) e configurar os parâmetros do tempo
+              (início, fim e incremento) ou deixar os predefinidos. De seguida basta carregar em Run. O clear serve para limpar os dados.</b></p>
+              <p><b>Passando à explicação do código temos:</b></p>
+              <img src="img/c600_52.png" class="center" alt="img52">
+              <br><br><p><b>Vamos buscar os valores a todas as caixas de texto de todos os parâmetros, instanciamos o robot de automática (utilizando o comando: mdl_nao),
+              ignorando qz (pois não interessa a pose pois vamos estar a defini-las de forma dinâmica), de seguida agarramos nos ângulos da junta da pose inicial e colocamos em qz, 
+              da final colocamos em qi e os parâmetros do tempo colocamos em t. De seguida estamos a utilizar o método jtraj() para efetuar a trajetória, contendo a posição inicial, 
+              final e os tempos e de seguida plotamos para o workspace com tamanho -1 até 1 nos três eixos. Por fim, passamos os valores dos ângulos da pose final para as caixas de
+                texto da pose inicial e colocamos a pose final a 0’s.</b></p>
+              <a href="#">Voltar ao topo.</a><br><br>
+          </div>
+        </section>
+        <section class="links" id="links">
+          <div class ="cabecalho">
+            <h2>Links Importantes:</h2><br>
+            <p>Nesta secção temos dois links um para os videos e outro para os scripts dos ambientes gráficos para cada robot.</p><br>
+            <h4>Videos Relatório:</h4>
+            <a href="https://alumniual-my.sharepoint.com/:f:/g/personal/30003474_students_ual_pt/EnAZsb9RXL9AkkXYRPxsW2EBU4APnLFvKyv4mNBeQkUjSQ?e=LvbeAJ" target="_blank">Relatórios</a>
+            <br><br><h4>Scripts de ambientes gráficos:</h4>
+            <a href="https://alumniual-my.sharepoint.com/:f:/g/personal/30003474_students_ual_pt/EtOS7063eDJOgLff5s3hsLkBpQ2KBPVsWprIC8LUMdMDtA?email=lcruvinel%40autonoma.pt&e=v8SQB8" target="_blank">Scripts dos ambientes gráfios</a>
+            <br><br> <a href="#">Voltar ao topo.</a><br><br>
+          </div>
+        </section>   
       </div>
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-  </div>
-  <br>
-  <dl class="row">
-    <dt class="col-sm-3">Description lists</dt>
-    <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
-  
-    <dt class="col-sm-3">Euismod</dt>
-    <dd class="col-sm-9">
-      <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
-      <p>Donec id elit non mi porta gravida at eget metus.</p>
-    </dd>
-  
-    <dt class="col-sm-3">Malesuada porta</dt>
-    <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
-  
-    <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
-    <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
-  
-    <dt class="col-sm-3">Nesting</dt>
-    <dd class="col-sm-9">
-      <dl class="row">
-        <dt class="col-sm-4">Nested definition list</dt>
-        <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
-      </dl>
-    </dd>
-  </dl>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-  </body>
+      <footer id="footerMsg">
+        <p>2021 © All rights reserved</p>
+        <p>Este Website foi desenvolvido como trabalho prático da cadeira de Sistemas de Robotica do curso de Engenharia Informática da universidade autónoma de Lisboa.<br>
+        <b>Desenvolvido pelos alunos :</b><br>30003474 - Marco Sendas e 30003774 - Pedro Morais</p>
+      </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+</body>
 </html>
